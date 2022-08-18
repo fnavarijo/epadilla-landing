@@ -1,12 +1,19 @@
 <template>
-  <div>
-    <!-- <NuxtWelcome /> -->
-    <nav>
-      <img src="https://res.cloudinary.com/dkvtpo8w1/image/upload/v1660831973/MJ%20Portafolio/Epadilla/EP_Logo.png" alt="">
-      <ul>
-        <li>Portafolio</li>
-        <li>Escríbeme</li>
-      </ul>
-    </nav>
+  <div class="relative">
+    <AppNavbar class="absolute w-full" />
+
+    <div class="w-screen h-screen bg-slate-400">
+      
+    </div>
   </div>
+
 </template>
+
+<script setup>
+import AppNavbar from './components/AppNavbar.vue';
+</script>
+
+
+<style>
+@import './assets/style/index.css';
+</style>
