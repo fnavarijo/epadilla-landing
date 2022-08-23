@@ -1,6 +1,8 @@
 <script setup>
 import { computed } from 'vue';
+import { useRoute } from 'vue-router';
 
+const route = useRoute();
 const props = defineProps({
   isWhite: {
     type: Boolean,
@@ -13,6 +15,10 @@ const logoImage = computed(() =>
     ? 'https://res.cloudinary.com/dkvtpo8w1/image/upload/v1660831973/MJ%20Portafolio/Epadilla/EP_Logo_white.png'
     : 'https://res.cloudinary.com/dkvtpo8w1/image/upload/v1660831973/MJ%20Portafolio/Epadilla/EP_Logo.png'
 );
+
+function isCurrentPath(path) {
+  return route.path === path;
+}
 </script>
 
 <template>
@@ -24,7 +30,10 @@ const logoImage = computed(() =>
       <ul class="flex justify-self-end space-x-8">
         <li
           class="nav-item uppercase tracking-widest group"
-          :class="[isWhite ? 'before:bg-white' : 'before:bg-black']"
+          :class="[
+            isWhite ? 'before:bg-white' : 'before:bg-black',
+            { 'is-active': isCurrentPath('/portfolio') },
+          ]"
         >
           <span>Portafolio</span>
           <div
@@ -41,7 +50,10 @@ const logoImage = computed(() =>
         </li>
         <li
           class="nav-item uppercase tracking-widest"
-          :class="[isWhite ? 'before:bg-white' : 'before:bg-black']"
+          :class="[
+            isWhite ? 'before:bg-white' : 'before:bg-black',
+            { 'is-active': isCurrentPath('/contact') },
+          ]"
         >
           <NuxtLink to="/contact"> Escríbeme </NuxtLink>
         </li>
@@ -58,6 +70,10 @@ const logoImage = computed(() =>
 .nav-item::before {
   content: '';
   @apply h-[2px] w-0 absolute -top-1 transition-all duration-100 ease-linear;
+}
+
+.is-active.nav-item::before {
+  @apply w-1/2;
 }
 
 .nav-item:hover::before {
