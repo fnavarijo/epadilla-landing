@@ -2,19 +2,28 @@
 defineProps({
   isWhite: {
     type: Boolean,
-    default: false
-  }
-})
+    default: false,
+  },
+});
 </script>
 
 <template>
   <div class="nav-menu px-16" :class="[isWhite ? 'text-white' : 'text-black']">
     <nav class="grid grid-cols-2 items-center">
-      <img class="w-24" src="https://res.cloudinary.com/dkvtpo8w1/image/upload/v1660831973/MJ%20Portafolio/Epadilla/EP_Logo_white.png" alt="">
+      <img
+        class="w-24"
+        src="https://res.cloudinary.com/dkvtpo8w1/image/upload/v1660831973/MJ%20Portafolio/Epadilla/EP_Logo_white.png"
+        alt=""
+      />
       <ul class="flex justify-self-end space-x-8">
-        <li class="nav-item uppercase tracking-widest group" :class="[isWhite ? 'before:bg-white' : 'before:bg-black']">
+        <li
+          class="nav-item uppercase tracking-widest group"
+          :class="[isWhite ? 'before:bg-white' : 'before:bg-black']"
+        >
           <span>Portafolio</span>
-          <div class="nav-item-submenu h-0 overflow-y-hidden min-w-[10ch] relative transition-all duration-100 ease-linear">
+          <div
+            class="nav-item-submenu h-0 overflow-y-hidden min-w-[10ch] relative transition-all duration-100 ease-linear"
+          >
             <ul
               class="pr-2 py-2 space-y-3 text-right border-r-2 absolute right-0 bottom-0"
               :class="[isWhite ? 'border-white' : 'border-black']"
@@ -24,20 +33,24 @@ defineProps({
             </ul>
           </div>
         </li>
-        <li class="nav-item uppercase tracking-widest" :class="[isWhite ? 'before:bg-white' : 'before:bg-black']">Escríbeme</li>
+        <li
+          class="nav-item uppercase tracking-widest"
+          :class="[isWhite ? 'before:bg-white' : 'before:bg-black']"
+        >
+          Escríbeme
+        </li>
       </ul>
     </nav>
   </div>
 </template>
 
 <style scoped>
-
 .nav-item {
   @apply relative transition-all duration-200 ease-fast-in;
 }
 
 .nav-item::before {
-  content: '';
+  content: "";
   @apply h-[2px] w-0 absolute -top-1 transition-all duration-100 ease-linear;
 }
 

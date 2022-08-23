@@ -1,0 +1,9 @@
+{
+  "editor.formatOnSave": true,
+  "[vue]": {
+    "gitlens.codeLens.scopes": [
+      "document"
+    ],
+    "editor.formatOnSave": true,
+  }
+}
