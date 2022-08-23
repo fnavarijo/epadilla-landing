@@ -16,7 +16,7 @@ const logoImage = computed(() =>
 </script>
 
 <template>
-  <div class="nav-menu px-16" :class="[isWhite ? 'text-white' : 'text-black']">
+  <div class="nav-menu" :class="[isWhite ? 'text-white' : 'text-black']">
     <nav class="grid grid-cols-2 items-center">
       <NuxtLink to="/">
         <img class="w-24" :src="logoImage" alt="" />
