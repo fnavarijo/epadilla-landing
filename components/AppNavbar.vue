@@ -17,7 +17,7 @@ const logoImage = computed(() =>
 );
 
 function isCurrentPath(path) {
-  return route.path === path;
+  return route.path.includes(path);
 }
 </script>
 
@@ -43,8 +43,8 @@ function isCurrentPath(path) {
               class="pr-2 py-2 space-y-3 text-right border-r-2 absolute right-0 bottom-0"
               :class="[isWhite ? 'border-white' : 'border-black']"
             >
-              <li class="text-sm"><NuxtLink to="/portfolio">Bodas</NuxtLink></li>
-              <li class="text-sm"><NuxtLink to="/portfolio">General</NuxtLink></li>
+              <li class="text-sm"><NuxtLink to="/portfolio/bodas">Bodas</NuxtLink></li>
+              <li class="text-sm"><NuxtLink to="/portfolio/general">General</NuxtLink></li>
             </ul>
           </div>
         </li>
