@@ -6,9 +6,7 @@ export default defineNuxtConfig({
   buildModules: ['@nuxtjs/google-fonts'],
   googleFonts: {
     families: {
-      Roboto: {
-        wght: [300, 400]
-      }
+      Roboto: [100, 300, 400]
     }
   }
 })
