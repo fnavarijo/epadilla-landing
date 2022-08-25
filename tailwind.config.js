@@ -6,6 +6,9 @@ module.exports = {
       fontFamily: {
         body: ['Roboto', 'sans-serif']
       },
+      gridTemplateRows: {
+        'masonry': 'repeat(4, minmax(200px, 1fr))'
+      },
       transitionTimingFunction: {
         'fast-in': 'cubic-bezier(0,.9,.35,.99)',
       },

@@ -3,5 +3,8 @@
     "@nuxtjs",
     "plugin:vue/vue3-recommended",
     "prettier"
-  ]
+  ],
+  "rules": {
+    "vue/no-v-for-template-key": false
+  }
 }
