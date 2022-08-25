@@ -1,9 +1,12 @@
 <script setup>
+import { provide } from 'vue';
 import { useRoute } from 'vue-router';
 import PortfolioGrid from '~/components/Portfolio/PortfolioGrid.vue';
 import PortfolioCard from '~/components/Portfolio/PortfolioCard.vue';
 
 const { params } = useRoute();
+
+provide('portfolio-type', params.name);
 </script>
 
 <template>

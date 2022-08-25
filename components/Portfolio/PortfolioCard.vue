@@ -1,10 +1,14 @@
 <script setup>
+import { inject } from 'vue';
+
 defineProps({
   lastnames: {
     type: String,
     required: true,
   },
 });
+
+const itemType = inject('portfolio-type');
 </script>
 
 <template>
@@ -14,11 +18,11 @@ defineProps({
     <div
       class="background-transition bg-black h-full w-full absolute top-0 left-0 right-0 bottom-0 invisible opacity-0 group-hover:visible group-hover:opacity-40"
     ></div>
-    <div class="px-8 absolute bottom-8 flex flex-col items-center">
+    <div class="px-8 absolute bottom-8 flex flex-col items-center w-full">
       <span
         class="text-transition uppercase tracking-widest font-light text-sm relative -top-4 opacity-0 group-hover:top-0 group-hover:opacity-100"
       >
-        Boda
+        {{ itemType }}
       </span>
       <div class="separator-transition h-[1px] bg-white mt-2 w-0 group-hover:w-2/3"></div>
       <span
