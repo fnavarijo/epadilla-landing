@@ -1,7 +1,11 @@
 <script setup>
+import { ref } from 'vue';
 import { useRoute } from 'vue-router';
 
 import GalleryMasonry from '~/components/Gallery/GalleryMasonry.vue';
+import GalleryViewer from '~/components/Gallery/GalleryViewer.vue';
+
+const isViewerOpen = ref(false);
 
 const { params } = useRoute();
 const imagesToLoad = [
@@ -16,6 +20,14 @@ const imagesToLoad = [
   'https://res.cloudinary.com/dkvtpo8w1/image/upload/v1662786109/MJ%20Portafolio/Epadilla/pexels-pixabay-265129.jpg',
   'https://res.cloudinary.com/dkvtpo8w1/image/upload/v1662786109/MJ%20Portafolio/Epadilla/pexels-pixabay-265129.jpg',
 ];
+
+function openViewer() {
+  isViewerOpen.value = true;
+}
+
+function closeViewer() {
+  isViewerOpen.value = false;
+}
 
 function getImagesChunks(images = [], size) {
   let baseImages = images.slice();
@@ -45,7 +57,8 @@ const galleryImages = getImagesChunks(imagesToLoad, 5);
       <span class="ml-8 text-2xl uppercase">Lopez Perez</span>
     </header>
     <div class="mt-8">
-      <GalleryMasonry v-for="images in galleryImages" :images="images" />
+      <GalleryMasonry v-for="images in galleryImages" :images="images" @click="openViewer" />
     </div>
+    <GalleryViewer v-show="isViewerOpen" @close="closeViewer" />
   </article>
 </template>

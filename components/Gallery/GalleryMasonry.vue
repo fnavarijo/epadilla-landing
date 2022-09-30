@@ -50,6 +50,7 @@ function getImage() {
             ...cellClass.style,
             backgroundImage: `url(${getImage()})`,
           }"
+          @click="$emit('click')"
         ></div>
       </template>
     </template>

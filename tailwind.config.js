@@ -9,6 +9,9 @@ module.exports = {
       gridTemplateRows: {
         'masonry': 'repeat(3, minmax(200px, 1fr))'
       },
+      gridTemplateColumns: {
+        'viewer': '1.5rem 1fr 1.5rem'
+      },
       transitionTimingFunction: {
         'fast-in': 'cubic-bezier(0,.9,.35,.99)',
       },
