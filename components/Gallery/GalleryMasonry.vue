@@ -1,11 +1,13 @@
 <script setup>
-defineProps({
+// TODO: I know I can improve this. Need to think about something.
+const props = defineProps({
   images: {
     type: Array,
     default: () => [],
   },
 });
 
+let imagePointer = 0;
 const colsLength = [2, 3, 1];
 
 const gridColumns = colsLength.reduce((columns, length) => {
@@ -31,10 +33,14 @@ const gridCells = gridCellsRows.map((gridCellRow, index) => {
     style: { 'grid-column': `${position} / span ${length}` },
   }));
 });
+
+function getImage() {
+  return props.images[imagePointer++];
+}
 </script>
 
 <template>
-  <div class="masonry mt-4">
+  <div class="masonry mt-3">
     <template v-for="(cellClasses, index) in gridCells" :key="index">
       <template v-for="(cellClass, innerIndex) in cellClasses" :key="innerIndex">
         <div
@@ -42,8 +48,7 @@ const gridCells = gridCellsRows.map((gridCellRow, index) => {
           :class="cellClass.class"
           :style="{
             ...cellClass.style,
-            backgroundImage:
-              'url(https://res.cloudinary.com/dkvtpo8w1/image/upload/v1662786109/MJ%20Portafolio/Epadilla/pexels-pixabay-265129.jpg)',
+            backgroundImage: `url(${getImage()})`,
           }"
         ></div>
       </template>

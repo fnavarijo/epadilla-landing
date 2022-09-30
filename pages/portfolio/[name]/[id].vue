@@ -4,15 +4,44 @@ import { useRoute } from 'vue-router';
 import GalleryMasonry from '~/components/Gallery/GalleryMasonry.vue';
 
 const { params } = useRoute();
+const imagesToLoad = [
+  'https://res.cloudinary.com/dkvtpo8w1/image/upload/v1662786109/MJ%20Portafolio/Epadilla/pexels-pixabay-265129.jpg',
+  'https://res.cloudinary.com/dkvtpo8w1/image/upload/v1662790818/MJ%20Portafolio/Epadilla/pexels-roberto-nickson-2559941.jpg',
+  'https://res.cloudinary.com/dkvtpo8w1/image/upload/v1662790815/MJ%20Portafolio/Epadilla/pexels-lumn-167699.jpg',
+  'https://res.cloudinary.com/dkvtpo8w1/image/upload/v1662786109/MJ%20Portafolio/Epadilla/pexels-pixabay-265129.jpg',
+  'https://res.cloudinary.com/dkvtpo8w1/image/upload/v1662790818/MJ%20Portafolio/Epadilla/pexels-roberto-nickson-2559941.jpg',
+  'https://res.cloudinary.com/dkvtpo8w1/image/upload/v1662790815/MJ%20Portafolio/Epadilla/pexels-lumn-167699.jpg',
+  'https://res.cloudinary.com/dkvtpo8w1/image/upload/v1662786109/MJ%20Portafolio/Epadilla/pexels-pixabay-265129.jpg',
+  'https://res.cloudinary.com/dkvtpo8w1/image/upload/v1662786109/MJ%20Portafolio/Epadilla/pexels-pixabay-265129.jpg',
+  'https://res.cloudinary.com/dkvtpo8w1/image/upload/v1662786109/MJ%20Portafolio/Epadilla/pexels-pixabay-265129.jpg',
+  'https://res.cloudinary.com/dkvtpo8w1/image/upload/v1662786109/MJ%20Portafolio/Epadilla/pexels-pixabay-265129.jpg',
+];
+
+function getImagesChunks(images = [], size) {
+  let baseImages = images.slice();
+  const chunks = [];
+
+  while (baseImages.length > size) {
+    const chunk = baseImages.slice(0, size);
+    chunks.push(chunk);
+
+    baseImages = baseImages.slice(size);
+  }
+
+  chunks.push(baseImages);
+  return chunks;
+}
+
+const galleryImages = getImagesChunks(imagesToLoad, 5);
 </script>
 
 <template>
-  <article class="mt-32 max-w-7xl mx-auto px-8">
+  <article class="mt-32 max-w-7xl mx-auto px-8 pb-8">
     <header class="flex items-center">
       <h1 class="text-3xl md:text-5xl text-black uppercase">{{ params.name }}</h1>
       <span class="h-3 w-3 bg-black rounded-full ml-3"></span>
       <span class="ml-8 text-2xl uppercase">Lopez Perez</span>
     </header>
-    <GalleryMasonry />
+    <GalleryMasonry v-for="images in galleryImages" :images="images" />
   </article>
 </template>

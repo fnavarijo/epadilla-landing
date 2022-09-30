@@ -44,7 +44,9 @@ function isCurrentPath(path) {
               :class="[isWhite ? 'border-white' : 'border-black']"
             >
               <li class="text-sm"><NuxtLink to="/portfolio/bodas">Bodas</NuxtLink></li>
-              <li class="text-sm"><NuxtLink to="/portfolio/general">General</NuxtLink></li>
+              <li class="text-sm">
+                <NuxtLink to="/portfolio/general">Proyectos</NuxtLink>
+              </li>
             </ul>
           </div>
         </li>
