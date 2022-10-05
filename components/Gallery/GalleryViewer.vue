@@ -5,13 +5,16 @@ import chevron from '~/assets/images/chevron.png';
 
 <template>
   <!-- TODO: disable scroll -->
+  <!-- TODO: Because is fixed, the padding counts behind the scroll bar -->
   <div
     class="px-8 fixed bg-black/60 w-screen h-screen top-0 left-0 flex justify-center items-center"
   >
-    <!-- TODO: Overflow hidden is not the solution. Need to make the iamge responsive to space -->
     <article class="w-full md:w-[90%] min-h-[75%] max-h-[90%] viewer-grid">
-      <div class="justify-self-end md:col-span-2 grid-area-close">
-        <img :src="closeIcon" class="h-6 w-6 cursor-pointer" alt="" @click="$emit('close')" />
+      <div
+        class="action-button justify-self-end self-center grid-area-close"
+        @click="$emit('close')"
+      >
+        <img :src="closeIcon" class="h-6 w-6" alt="Close dialog" />
       </div>
 
       <!-- // TODO: Check how it behaves with vertical images -->
@@ -20,9 +23,13 @@ import chevron from '~/assets/images/chevron.png';
         src="https://res.cloudinary.com/dkvtpo8w1/image/upload/v1662790818/MJ%20Portafolio/Epadilla/pexels-roberto-nickson-2559941.jpg"
         alt=""
       />
-      <div class="flex justify-between grid-area-controls">
-        <img :src="chevron" class="h-6 w-6 transform rotate-90" alt="" />
-        <img :src="chevron" class="h-6 w-6 transform -rotate-90" alt="" />
+      <div class="flex justify-between items-center grid-area-controls">
+        <div class="action-button">
+          <img :src="chevron" class="h-6 w-6 transform rotate-90" alt="" />
+        </div>
+        <div class="action-button">
+          <img :src="chevron" class="h-6 w-6 transform -rotate-90" alt="" />
+        </div>
       </div>
     </article>
   </div>
@@ -43,5 +50,9 @@ import chevron from '~/assets/images/chevron.png';
 
 .grid-area-controls {
   grid-area: controls;
+}
+
+.action-button {
+  @apply p-2 flex justify-center items-center cursor-pointer rounded-full hover:bg-black/90 transition-colors duration-150 ease-fast-in-bg;
 }
 </style>

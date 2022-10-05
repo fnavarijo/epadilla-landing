@@ -8,7 +8,7 @@ module.exports = {
       },
       gridTemplateRows: {
         'masonry': 'repeat(3, minmax(200px, 1fr))',
-        'viewer': '[close] 1.5rem [content] 1fr [controls] 1.5rem',
+        'viewer': '[close] 4rem [content] 1fr [controls] 4rem',
 
       },
       gridTemplateColumns: {
@@ -16,6 +16,7 @@ module.exports = {
       },
       transitionTimingFunction: {
         'fast-in': 'cubic-bezier(0,.9,.35,.99)',
+        'fast-in-bg': 'cubic-bezier(0, 0.46, 0, 1.07)'
       },
       transitionProperty: {
         'position-opacity': 'top, bottom, left, right, opacity',

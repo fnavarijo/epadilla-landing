@@ -59,6 +59,21 @@ const galleryImages = getImagesChunks(imagesToLoad, 5);
     <div class="mt-8">
       <GalleryMasonry v-for="images in galleryImages" :images="images" @click="openViewer" />
     </div>
-    <GalleryViewer v-show="isViewerOpen" @close="closeViewer" />
+    <Transition>
+      <GalleryViewer v-show="isViewerOpen" @close="closeViewer" />
+    </Transition>
   </article>
 </template>
+
+<style>
+/* we will explain what these classes do next! */
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}
+</style>
