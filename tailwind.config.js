@@ -7,7 +7,9 @@ module.exports = {
         body: ['Roboto', 'sans-serif']
       },
       gridTemplateRows: {
-        'masonry': 'repeat(3, minmax(200px, 1fr))'
+        'masonry': 'repeat(3, minmax(200px, 1fr))',
+        'viewer': '[close] 1.5rem [content] 1fr [controls] 1.5rem',
+
       },
       gridTemplateColumns: {
         'viewer': '1.5rem 1fr 1.5rem'
