@@ -6,6 +6,7 @@ import GalleryMasonry from '~/components/Gallery/GalleryMasonry.vue';
 import GalleryViewer from '~/components/Gallery/GalleryViewer.vue';
 
 const isViewerOpen = ref(false);
+const imageOnViewer = ref('');
 
 const { params } = useRoute();
 const imagesToLoad = [
@@ -21,7 +22,8 @@ const imagesToLoad = [
   'https://res.cloudinary.com/dkvtpo8w1/image/upload/v1662786109/MJ%20Portafolio/Epadilla/pexels-pixabay-265129.jpg',
 ];
 
-function openViewer() {
+function openViewer(imageClicked) {
+  imageOnViewer.value = imagesToLoad[imageClicked];
   isViewerOpen.value = true;
 }
 
@@ -57,10 +59,10 @@ const galleryImages = getImagesChunks(imagesToLoad, 5);
       <span class="ml-8 text-2xl uppercase">Lopez Perez</span>
     </header>
     <div class="mt-8">
-      <GalleryMasonry v-for="images in galleryImages" :images="images" @click="openViewer" />
+      <GalleryMasonry v-for="images in galleryImages" :images="images" @view="openViewer" />
     </div>
     <Transition>
-      <GalleryViewer v-show="isViewerOpen" @close="closeViewer" />
+      <GalleryViewer v-show="isViewerOpen" @close="closeViewer" :viewing-image="imageOnViewer" />
     </Transition>
   </article>
 </template>

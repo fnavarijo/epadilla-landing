@@ -1,6 +1,14 @@
 <script setup>
 import closeIcon from '~/assets/images/close_white.png';
 import chevron from '~/assets/images/chevron.png';
+
+// TODO: Probably move to the state could be better.
+defineProps({
+  viewingImage: {
+    type: String,
+    required: true,
+  },
+});
 </script>
 
 <template>
@@ -20,7 +28,7 @@ import chevron from '~/assets/images/chevron.png';
       <!-- // TODO: Check how it behaves with vertical images -->
       <img
         class="h-full object-contain w-full max-w-6xl grid-area-content"
-        src="https://res.cloudinary.com/dkvtpo8w1/image/upload/v1662790818/MJ%20Portafolio/Epadilla/pexels-roberto-nickson-2559941.jpg"
+        :src="viewingImage"
         alt=""
       />
       <div class="flex justify-between items-center grid-area-controls">

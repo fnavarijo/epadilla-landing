@@ -26,11 +26,13 @@ const gridCellsRows = [
   [{ class: 'block-4' }, { class: 'block-5' }],
 ];
 
+let gridCellIndex = 0;
 const gridCells = gridCellsRows.map((gridCellRow, index) => {
   const { position, length } = gridColumns[index];
   return gridCellRow.map((gridCell) => ({
     ...gridCell,
     style: { 'grid-column': `${position} / span ${length}` },
+    positionIndex: gridCellIndex++,
   }));
 });
 
@@ -50,7 +52,7 @@ function getImage() {
             ...cellClass.style,
             backgroundImage: `url(${getImage()})`,
           }"
-          @click="$emit('click')"
+          @click="$emit('view', cellClass.positionIndex)"
         ></div>
       </template>
     </template>
