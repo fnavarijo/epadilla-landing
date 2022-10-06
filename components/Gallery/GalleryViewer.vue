@@ -27,11 +27,11 @@ defineProps({
 
       <!-- // TODO: Check how it behaves with vertical images -->
       <img
-        class="h-full object-contain w-full max-w-6xl grid-area-content"
+        class="h-full object-contain w-full max-w-4xl grid-area-content place-self-center"
         :src="viewingImage"
         alt=""
       />
-      <div class="flex justify-between items-center grid-area-controls">
+      <div class="flex place-self-center grid-area-controls space-x-12">
         <div class="action-button">
           <img :src="chevron" class="h-6 w-6 transform rotate-90" alt="" />
         </div>
@@ -49,15 +49,15 @@ defineProps({
 }
 
 .grid-area-close {
-  grid-area: close;
+  grid-row-start: close;
 }
 
 .grid-area-content {
-  grid-area: content;
+  grid-row-start: content;
 }
 
 .grid-area-controls {
-  grid-area: controls;
+  grid-row-start: controls;
 }
 
 .action-button {
