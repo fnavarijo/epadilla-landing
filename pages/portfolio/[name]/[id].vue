@@ -20,10 +20,17 @@ const imagesToLoad = [
   'https://res.cloudinary.com/dkvtpo8w1/image/upload/v1662786109/MJ%20Portafolio/Epadilla/pexels-pixabay-265129.jpg',
   'https://res.cloudinary.com/dkvtpo8w1/image/upload/v1662786109/MJ%20Portafolio/Epadilla/pexels-pixabay-265129.jpg',
   'https://res.cloudinary.com/dkvtpo8w1/image/upload/v1662786109/MJ%20Portafolio/Epadilla/pexels-pixabay-265129.jpg',
+  'https://res.cloudinary.com/dkvtpo8w1/image/upload/v1662790818/MJ%20Portafolio/Epadilla/pexels-roberto-nickson-2559941.jpg',
 ];
 
 function openViewer(imageClicked) {
   imageOnViewer.value = imagesToLoad[imageClicked];
+  isViewerOpen.value = true;
+}
+
+function openImageOnViewer(position) {
+  console.log('Opening imge:', position);
+  imageOnViewer.value = imagesToLoad[position];
   isViewerOpen.value = true;
 }
 
@@ -59,7 +66,13 @@ const galleryImages = getImagesChunks(imagesToLoad, 5);
       <span class="ml-8 text-2xl uppercase">Lopez Perez</span>
     </header>
     <div class="mt-8">
-      <GalleryMasonry v-for="images in galleryImages" :images="images" @view="openViewer" />
+      <GalleryMasonry
+        v-for="(images, groupIndex) in galleryImages"
+        :key="groupIndex"
+        :images="images"
+        :offset-index="groupIndex * 5"
+        @view="openImageOnViewer"
+      />
     </div>
     <Transition>
       <GalleryViewer v-show="isViewerOpen" @close="closeViewer" :viewing-image="imageOnViewer" />

@@ -4,6 +4,13 @@ const props = defineProps({
     type: Array,
     default: () => [],
   },
+  // This parameter is more to track position.
+  // I feel is the parent who should handle it.
+  // Need to investigate how to handle encapsulation with vue
+  offsetIndex: {
+    type: Number,
+    default: 0,
+  },
 });
 </script>
 
@@ -13,12 +20,12 @@ const props = defineProps({
     <div
       v-for="(image, index) in images"
       :key="index"
-      class="w-full h-full bg-no-repeat bg-cover bg-center"
+      class="w-full h-full bg-no-repeat bg-cover bg-center cursor-pointer transition-transform duration-75 ease-linear hover:scale-[1.03]"
       :class="`block-${index + 1}`"
       :style="{
         backgroundImage: `url(${image})`,
       }"
-      @click="$emit('view', index)"
+      @click="$emit('view', offsetIndex + index)"
     ></div>
   </div>
 </template>
