@@ -1,86 +1,56 @@
 <script setup>
-// TODO: I know I can improve this. Need to think about something.
 const props = defineProps({
   images: {
     type: Array,
     default: () => [],
   },
 });
-
-let imagePointer = 0;
-const colsLength = [2, 3, 1];
-
-const gridColumns = colsLength.reduce((columns, length) => {
-  const lastColumn = columns[columns.length - 1];
-
-  const currentPosition = lastColumn
-    ? { position: lastColumn.position + lastColumn.length, length }
-    : { position: 1, length };
-
-  return columns.concat(currentPosition);
-}, []);
-
-const gridCellsRows = [
-  [{ class: 'block-1' }],
-  [{ class: 'block-2' }, { class: 'block-3' }],
-  [{ class: 'block-4' }, { class: 'block-5' }],
-];
-
-let gridCellIndex = 0;
-const gridCells = gridCellsRows.map((gridCellRow, index) => {
-  const { position, length } = gridColumns[index];
-  return gridCellRow.map((gridCell) => ({
-    ...gridCell,
-    style: { 'grid-column': `${position} / span ${length}` },
-    positionIndex: gridCellIndex++,
-  }));
-});
-
-function getImage() {
-  return props.images[imagePointer++];
-}
 </script>
 
 <template>
   <div class="masonry mt-3">
-    <template v-for="(cellClasses, index) in gridCells" :key="index">
-      <template v-for="(cellClass, innerIndex) in cellClasses" :key="innerIndex">
-        <div
-          class="w-full h-full bg-no-repeat bg-cover bg-center"
-          :class="cellClass.class"
-          :style="{
-            ...cellClass.style,
-            backgroundImage: `url(${getImage()})`,
-          }"
-          @click="$emit('view', cellClass.positionIndex)"
-        ></div>
-      </template>
-    </template>
+    <!-- TODO: Lazy load this images -->
+    <div
+      v-for="(image, index) in images"
+      :key="index"
+      class="w-full h-full bg-no-repeat bg-cover bg-center"
+      :class="`block-${index + 1}`"
+      :style="{
+        backgroundImage: `url(${image})`,
+      }"
+      @click="$emit('view', index)"
+    ></div>
   </div>
 </template>
 
 <style scoped>
 .masonry {
   @apply grid grid-cols-6 grid-rows-masonry gap-3;
+  /* This could be parametrized */
+  /* Or generated 🤔 */
+  grid-template-areas:
+    'area1 area1 area2 area2 area2 area4'
+    'area1 area1 area2 area2 area2 area5'
+    'area1 area1 area3 area3 area3 area5';
 }
 
 .block-1 {
-  @apply row-[1_/_span_3];
+  grid-area: area1;
 }
 
 .block-2 {
-  @apply row-[1_/_span_2];
+  grid-area: area2;
 }
 
 .block-3 {
-  @apply row-start-3;
+  grid-area: area3;
 }
 
 .block-4 {
-  @apply row-span-1;
+  grid-area: area4;
 }
 
 .block-5 {
-  @apply row-[2_/_span_2];
+  grid-area: area5;
 }
 </style>
