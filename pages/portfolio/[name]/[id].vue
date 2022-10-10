@@ -6,7 +6,7 @@ import GalleryMasonry from '~/components/Gallery/GalleryMasonry.vue';
 import GalleryViewer from '~/components/Gallery/GalleryViewer.vue';
 
 const isViewerOpen = ref(false);
-const imageOnViewer = ref('');
+const imageViewedIndex = ref(0);
 
 const { params } = useRoute();
 const imagesToLoad = [
@@ -16,6 +16,7 @@ const imagesToLoad = [
   'https://res.cloudinary.com/dkvtpo8w1/image/upload/v1662786109/MJ%20Portafolio/Epadilla/pexels-pixabay-265129.jpg',
   'https://res.cloudinary.com/dkvtpo8w1/image/upload/v1662790818/MJ%20Portafolio/Epadilla/pexels-roberto-nickson-2559941.jpg',
   'https://res.cloudinary.com/dkvtpo8w1/image/upload/v1662790815/MJ%20Portafolio/Epadilla/pexels-lumn-167699.jpg',
+  'https://res.cloudinary.com/dkvtpo8w1/image/upload/v1665415508/MJ%20Portafolio/Epadilla/pexels-felix-mittermeier-1459505.jpg',
   'https://res.cloudinary.com/dkvtpo8w1/image/upload/v1662786109/MJ%20Portafolio/Epadilla/pexels-pixabay-265129.jpg',
   'https://res.cloudinary.com/dkvtpo8w1/image/upload/v1662786109/MJ%20Portafolio/Epadilla/pexels-pixabay-265129.jpg',
   'https://res.cloudinary.com/dkvtpo8w1/image/upload/v1662786109/MJ%20Portafolio/Epadilla/pexels-pixabay-265129.jpg',
@@ -23,14 +24,8 @@ const imagesToLoad = [
   'https://res.cloudinary.com/dkvtpo8w1/image/upload/v1662790818/MJ%20Portafolio/Epadilla/pexels-roberto-nickson-2559941.jpg',
 ];
 
-function openViewer(imageClicked) {
-  imageOnViewer.value = imagesToLoad[imageClicked];
-  isViewerOpen.value = true;
-}
-
 function openImageOnViewer(position) {
-  console.log('Opening imge:', position);
-  imageOnViewer.value = imagesToLoad[position];
+  imageViewedIndex.value = position;
   isViewerOpen.value = true;
 }
 
@@ -75,13 +70,17 @@ const galleryImages = getImagesChunks(imagesToLoad, 5);
       />
     </div>
     <Transition>
-      <GalleryViewer v-show="isViewerOpen" @close="closeViewer" :viewing-image="imageOnViewer" />
+      <GalleryViewer
+        v-show="isViewerOpen"
+        @close="closeViewer"
+        :images="imagesToLoad"
+        :viewed-image="imageViewedIndex"
+      />
     </Transition>
   </article>
 </template>
 
 <style>
-/* we will explain what these classes do next! */
 .v-enter-active,
 .v-leave-active {
   transition: opacity 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);

@@ -1,14 +1,40 @@
 <script setup>
+import { ref, watch, onMounted } from 'vue';
+
 import closeIcon from '~/assets/images/close_white.png';
 import chevron from '~/assets/images/chevron.png';
 
 // TODO: Probably move to the state could be better.
-defineProps({
-  viewingImage: {
-    type: String,
+const props = defineProps({
+  images: {
+    type: Array,
+    default: () => [],
+  },
+  viewedImage: {
+    type: Number,
     required: true,
   },
 });
+
+const imageViewedIndex = ref(0);
+
+onMounted(() => {
+  imageViewedIndex.value = props.viewedImage || 0;
+});
+
+watch(
+  () => props.viewedImage,
+  (viewedImage) => (imageViewedIndex.value = viewedImage)
+);
+
+function viewNextImage() {
+  imageViewedIndex.value = (imageViewedIndex.value + 1) % props.images.length;
+}
+
+function viewPreviousImage() {
+  imageViewedIndex.value =
+    imageViewedIndex.value <= 0 ? props.images.length - 1 : imageViewedIndex.value - 1;
+}
 </script>
 
 <template>
@@ -18,26 +44,25 @@ defineProps({
     class="px-8 fixed bg-black/60 w-screen h-screen top-0 left-0 flex justify-center items-center"
   >
     <article class="w-full md:w-[90%] min-h-[75%] max-h-[90%] viewer-grid">
-      <div
+      <button
         class="action-button justify-self-end self-center grid-area-close"
         @click="$emit('close')"
       >
         <img :src="closeIcon" class="h-6 w-6" alt="Close dialog" />
-      </div>
-
+      </button>
       <!-- // TODO: Check how it behaves with vertical images -->
       <img
         class="h-full object-contain w-full max-w-4xl grid-area-content place-self-center"
-        :src="viewingImage"
+        :src="images[imageViewedIndex]"
         alt=""
       />
       <div class="flex place-self-center grid-area-controls space-x-12">
-        <div class="action-button">
+        <button class="action-button" @click="viewPreviousImage">
           <img :src="chevron" class="h-6 w-6 transform rotate-90" alt="" />
-        </div>
-        <div class="action-button">
+        </button>
+        <button class="action-button" @click="viewNextImage">
           <img :src="chevron" class="h-6 w-6 transform -rotate-90" alt="" />
-        </div>
+        </button>
       </div>
     </article>
   </div>
@@ -61,6 +86,6 @@ defineProps({
 }
 
 .action-button {
-  @apply p-2 flex justify-center items-center cursor-pointer rounded-full hover:bg-black/90 transition-colors duration-150 ease-fast-in-bg;
+  @apply p-2 flex justify-center items-center rounded-full hover:bg-black/90 transition-colors duration-150 ease-fast-in-bg;
 }
 </style>
