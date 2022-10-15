@@ -57,7 +57,7 @@ const galleryImages = getImagesChunks(imagesToLoad, 5);
 <template>
   <article class="mt-32 max-w-7xl mx-auto px-8 pb-8">
     <header class="flex items-center">
-      <NuxtLink :to="`/portfolio/${params.name}`">
+      <NuxtLink :to="`/portfolio/${params.name}`" class="relative category-breadcrumb">
         <h1 class="text-3xl md:text-5xl text-black uppercase">{{ params.name }}</h1>
       </NuxtLink>
       <span class="h-3 w-3 bg-black rounded-full ml-3"></span>
@@ -83,7 +83,11 @@ const galleryImages = getImagesChunks(imagesToLoad, 5);
   </article>
 </template>
 
-<style>
+<style scoped>
+.category-breadcrumb {
+  @apply after:content-[''] after:h-1 after:bg-black after:absolute after:-bottom-2 after:w-0 hover:after:w-full after:transition-all after:duration-100 after:ease-fast-in;
+}
+
 .v-enter-active,
 .v-leave-active {
   transition: opacity 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);

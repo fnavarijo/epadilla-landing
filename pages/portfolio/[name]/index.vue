@@ -15,7 +15,7 @@ provide('portfolio-type', params.name);
       <h1 class="text-3xl md:text-5xl text-black uppercase">{{ params.name }}</h1>
       <span class="h-3 w-3 bg-black rounded-full ml-3"></span>
     </header>
-    <PortfolioGrid class="mt-4">
+    <PortfolioGrid class="mt-8">
       <PortfolioCard key="1" lastnames="Lopez Perez" gallery-id="1" />
       <PortfolioCard key="2" lastnames="Lopez Perez" gallery-id="2" />
       <PortfolioCard key="3" lastnames="Lopez Perez" gallery-id="3" />
