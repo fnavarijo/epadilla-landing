@@ -17,11 +17,11 @@ watch(
 <template>
   <div>
     <AppNavbar
-      class="w-full max-w-7xl hidden md:block"
+      class="w-full max-w-7xl block"
       :class="[isHomePage ? 'absolute z-10 left-1/2 -translate-x-1/2' : 'mx-auto']"
       :is-white="isHomePage"
     />
-    <div class="absolute md:hidden">this is mobile</div>
+    <!-- <div class="absolute md:hidden">this is mobile</div> -->
 
     <NuxtPage />
   </div>
