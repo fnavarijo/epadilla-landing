@@ -40,7 +40,7 @@ function viewPreviousImage() {
 <template>
   <!-- TODO: disable scroll -->
   <!-- TODO: Because is fixed, the padding counts behind the scroll bar -->
-  <div class="p-8 fixed bg-black/60 w-screen h-screen top-0 left-0">
+  <div class="p-8 fixed bg-black/80 w-screen h-screen top-0 left-0">
     <article class="w-full viewer-grid">
       <button
         class="action-button justify-self-end self-center grid-area-close"

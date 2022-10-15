@@ -27,10 +27,13 @@ const imagesToLoad = [
 function openImageOnViewer(position) {
   imageViewedIndex.value = position;
   isViewerOpen.value = true;
+
+  document.body.style.overflow = 'hidden';
 }
 
 function closeViewer() {
   isViewerOpen.value = false;
+  document.body.style.overflow = 'auto';
 }
 
 function getImagesChunks(images = [], size) {
