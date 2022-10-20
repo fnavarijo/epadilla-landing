@@ -1,6 +1,7 @@
 {
   "private": true,
   "scripts": {
+    "prebuild": "[[ $CI = true ]] && npx pnpm install --shamefully-hoist --store=node_modules/.pnpm-store || echo skiping pnpm install",
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
