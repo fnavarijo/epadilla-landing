@@ -1,11 +1,9 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 
-const isOpen = ref(false);
 const playState = ref('paused');
 
 function triggerMenu() {
-  isOpen.value = !isOpen.value;
   playState.value = 'running';
 }
 
@@ -15,6 +13,10 @@ function onAnimationIteration() {
 
 onMounted(() => {
   document.getElementById('line').addEventListener('animationiteration', onAnimationIteration);
+});
+
+defineExpose({
+  triggerMenu,
 });
 </script>
 
@@ -36,6 +38,8 @@ onMounted(() => {
 .hamburger {
   --play-state: paused;
   --lines-spacing: 0.5rem;
+  --animation-duration: 0.5s;
+  --animation-timing: cubic-bezier(0, 0, 0, 0.99);
 }
 
 .line {
@@ -43,15 +47,18 @@ onMounted(() => {
 }
 
 .line-a {
-  animation: 0.5s cubic-bezier(0, 0, 0, 0.99) var(--play-state) alternate infinite open-close;
+  animation: var(--animation-duration) var(--animation-timing) var(--play-state) alternate infinite
+    open-close;
 }
 
 .line-b {
-  animation: 0.5s cubic-bezier(0, 0, 0, 0.99) var(--play-state) alternate infinite open-close-b;
+  animation: var(--animation-duration) var(--animation-timing) var(--play-state) alternate infinite
+    open-close-b;
 }
 
 .line-c {
-  animation: 0.5s cubic-bezier(0, 0, 0, 0.99) var(--play-state) alternate infinite open-close-c;
+  animation: var(--animation-duration) var(--animation-timing) var(--play-state) alternate infinite
+    open-close-c;
 }
 
 @keyframes open-close {

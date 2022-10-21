@@ -16,7 +16,8 @@ module.exports = {
       },
       transitionTimingFunction: {
         'fast-in': 'cubic-bezier(0,.9,.35,.99)',
-        'fast-in-bg': 'cubic-bezier(0, 0.46, 0, 1.07)'
+        'fast-in-bg': 'cubic-bezier(0, 0.46, 0, 1.07)',
+        'slide-ease-out': 'cubic-bezier(0, 0, 0, 0.99)'
       },
       transitionProperty: {
         'position-opacity': 'top, bottom, left, right, opacity',
