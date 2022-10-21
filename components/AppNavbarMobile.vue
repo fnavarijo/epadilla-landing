@@ -59,8 +59,8 @@ function closeMenu() {
           </ul>
         </nav>
         <NuxtLink
-          class="absolute uppercase tracking-widest bottom-4 self-center"
-          @click="isOpen = false"
+          class="absolute uppercase tracking-widest bottom-8 self-center"
+          @click="closeMenu"
           to="/contact"
         >
           Escríbeme
