@@ -45,26 +45,26 @@ function closeMenu() {
         class="fixed top-0 right-0 min-h-screen w-2/3 bg-white z-40 p-4 pr-6 flex flex-col items-end panel-slide"
         :class="[isOpen ? 'translate-x-0' : 'translate-x-full']"
       >
-        <nav class="mt-16">
+        <nav class="mt-20">
           <ul class="uppercase tracking-widest">
-            <li>Portafolio</li>
-            <ul class="text-right pr-2 space-y-2 border-r-2 mt-2 border-black">
-              <li class="text-sm">
-                <NuxtLink @click="closeMenu" to="/portfolio/bodas">Bodas</NuxtLink>
-              </li>
-              <li class="text-sm">
-                <NuxtLink @click="closeMenu" to="/portfolio/general">Proyectos</NuxtLink>
-              </li>
-            </ul>
+            <li>
+              <span>Portafolio</span>
+              <ul class="text-right pr-2 space-y-2 border-r-2 mt-2 border-black">
+                <li class="text-sm">
+                  <NuxtLink @click="closeMenu" to="/portfolio/bodas">Bodas</NuxtLink>
+                </li>
+                <li class="text-sm">
+                  <NuxtLink @click="closeMenu" to="/portfolio/general">Proyectos</NuxtLink>
+                </li>
+              </ul>
+            </li>
+            <li class="mt-8 text-right">
+              <NuxtLink class="uppercase tracking-widest" @click="closeMenu" to="/contact">
+                Escríbeme
+              </NuxtLink>
+            </li>
           </ul>
         </nav>
-        <NuxtLink
-          class="absolute uppercase tracking-widest bottom-8 self-center"
-          @click="closeMenu"
-          to="/contact"
-        >
-          Escríbeme
-        </NuxtLink>
       </div>
     </div>
   </div>
