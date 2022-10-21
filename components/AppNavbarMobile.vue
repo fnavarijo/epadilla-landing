@@ -3,6 +3,7 @@ import { ref, computed } from 'vue';
 
 import MenuIcon from '~/assets/images/menu.png';
 import CloseIcon from '~/assets/images/close.png';
+import HamburgerIcon from '~/components/Icon/HamburgerIcon.vue';
 
 // TODO: Duplicated
 const props = defineProps({
@@ -26,8 +27,8 @@ const logoImage = computed(() =>
     <div>
       <NuxtLink to="/"><img class="w-20" :src="logoImage" alt="" /></NuxtLink>
     </div>
-    <div>
-      <button @click="isOpen = true"><img :src="MenuIcon" alt="" width="32" /></button>
+    <div class="relative w-8 h-8">
+      <button @click="isOpen = !isOpen" class="absolute z-50"><HamburgerIcon /></button>
     </div>
     <div class="absolute">
       <div
@@ -35,12 +36,9 @@ const logoImage = computed(() =>
         :class="[isOpen ? 'visible' : 'invisible']"
       ></div>
       <div
-        class="fixed top-0 right-0 min-h-screen w-2/3 bg-white z-50 p-4 pr-6 flex flex-col items-end"
+        class="fixed top-0 right-0 min-h-screen w-2/3 bg-white z-40 p-4 pr-6 flex flex-col items-end"
         :class="[isOpen ? 'translate-x-0' : 'translate-x-full']"
       >
-        <button @click="isOpen = false">
-          <img :src="CloseIcon" alt="" width="32" />
-        </button>
         <nav class="mt-12">
           <ul class="uppercase tracking-widest">
             <li>Portafolio</li>
