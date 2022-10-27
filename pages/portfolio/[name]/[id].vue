@@ -10,18 +10,18 @@ const imageViewedIndex = ref(0);
 
 const { params } = useRoute();
 const imagesToLoad = [
-  'https://res.cloudinary.com/dkvtpo8w1/image/upload/v1662786109/MJ%20Portafolio/Epadilla/pexels-pixabay-265129.jpg',
-  'https://res.cloudinary.com/dkvtpo8w1/image/upload/v1662790818/MJ%20Portafolio/Epadilla/pexels-roberto-nickson-2559941.jpg',
-  'https://res.cloudinary.com/dkvtpo8w1/image/upload/v1662790815/MJ%20Portafolio/Epadilla/pexels-lumn-167699.jpg',
-  'https://res.cloudinary.com/dkvtpo8w1/image/upload/v1662786109/MJ%20Portafolio/Epadilla/pexels-pixabay-265129.jpg',
-  'https://res.cloudinary.com/dkvtpo8w1/image/upload/v1662790818/MJ%20Portafolio/Epadilla/pexels-roberto-nickson-2559941.jpg',
-  'https://res.cloudinary.com/dkvtpo8w1/image/upload/v1662790815/MJ%20Portafolio/Epadilla/pexels-lumn-167699.jpg',
-  'https://res.cloudinary.com/dkvtpo8w1/image/upload/v1665415508/MJ%20Portafolio/Epadilla/pexels-felix-mittermeier-1459505.jpg',
-  'https://res.cloudinary.com/dkvtpo8w1/image/upload/v1662786109/MJ%20Portafolio/Epadilla/pexels-pixabay-265129.jpg',
-  'https://res.cloudinary.com/dkvtpo8w1/image/upload/v1662786109/MJ%20Portafolio/Epadilla/pexels-pixabay-265129.jpg',
-  'https://res.cloudinary.com/dkvtpo8w1/image/upload/v1662786109/MJ%20Portafolio/Epadilla/pexels-pixabay-265129.jpg',
-  'https://res.cloudinary.com/dkvtpo8w1/image/upload/v1662786109/MJ%20Portafolio/Epadilla/pexels-pixabay-265129.jpg',
-  'https://res.cloudinary.com/dkvtpo8w1/image/upload/v1662790818/MJ%20Portafolio/Epadilla/pexels-roberto-nickson-2559941.jpg',
+  'https://res.cloudinary.com/dkvtpo8w1/image/upload/c_fill,w_426,h_600,f_auto/v1662786109/MJ%20Portafolio/Epadilla/pexels-pixabay-265129.jpg',
+  'https://res.cloudinary.com/dkvtpo8w1/image/upload/c_fill,w_426,h_600,f_auto/v1662790818/MJ%20Portafolio/Epadilla/pexels-roberto-nickson-2559941.jpg',
+  'https://res.cloudinary.com/dkvtpo8w1/image/upload/c_fill,w_426,h_600,f_auto/v1662790815/MJ%20Portafolio/Epadilla/pexels-lumn-167699.jpg',
+  'https://res.cloudinary.com/dkvtpo8w1/image/upload/c_fill,w_426,h_600,f_auto/v1662786109/MJ%20Portafolio/Epadilla/pexels-pixabay-265129.jpg',
+  'https://res.cloudinary.com/dkvtpo8w1/image/upload/c_fill,w_426,h_600,f_auto/v1662790818/MJ%20Portafolio/Epadilla/pexels-roberto-nickson-2559941.jpg',
+  'https://res.cloudinary.com/dkvtpo8w1/image/upload/c_fill,w_426,h_600,f_auto/v1662790815/MJ%20Portafolio/Epadilla/pexels-lumn-167699.jpg',
+  'https://res.cloudinary.com/dkvtpo8w1/image/upload/c_fill,w_426,h_600,f_auto/v1665415508/MJ%20Portafolio/Epadilla/pexels-felix-mittermeier-1459505.jpg',
+  'https://res.cloudinary.com/dkvtpo8w1/image/upload/c_fill,w_426,h_600,f_auto/v1662786109/MJ%20Portafolio/Epadilla/pexels-pixabay-265129.jpg',
+  'https://res.cloudinary.com/dkvtpo8w1/image/upload/c_fill,w_426,h_600,f_auto/v1662786109/MJ%20Portafolio/Epadilla/pexels-pixabay-265129.jpg',
+  'https://res.cloudinary.com/dkvtpo8w1/image/upload/c_fill,w_426,h_600,f_auto/v1662786109/MJ%20Portafolio/Epadilla/pexels-pixabay-265129.jpg',
+  'https://res.cloudinary.com/dkvtpo8w1/image/upload/c_fill,w_426,h_600,f_auto/v1662786109/MJ%20Portafolio/Epadilla/pexels-pixabay-265129.jpg',
+  'https://res.cloudinary.com/dkvtpo8w1/image/upload/c_fill,w_426,h_600,f_auto/v1662790818/MJ%20Portafolio/Epadilla/pexels-roberto-nickson-2559941.jpg',
 ];
 
 function openImageOnViewer(position) {
