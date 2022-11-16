@@ -1,10 +1,15 @@
 <script setup>
+// Main Page for each gallery
+// Nuxt/Content components are failing to import functions from #imports
 import { provide } from 'vue';
 import { useRoute } from 'vue-router';
 import PortfolioGrid from '~/components/Portfolio/PortfolioGrid.vue';
 import PortfolioCard from '~/components/Portfolio/PortfolioCard.vue';
 
 const { params } = useRoute();
+const { data } = await useAsyncData('projects ', () => queryContent('/').find());
+
+console.log('Response', data.value);
 
 provide('portfolio-type', params.name);
 </script>
@@ -23,5 +28,6 @@ provide('portfolio-type', params.name);
       <PortfolioCard key="1" lastnames="Lopez Perez" gallery-id="5" />
       <PortfolioCard key="1" lastnames="Lopez Perez" gallery-id="6" />
     </PortfolioGrid>
+    <div>Data: {{ data }}</div>
   </article>
 </template>

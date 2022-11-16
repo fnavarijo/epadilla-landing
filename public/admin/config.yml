@@ -10,12 +10,13 @@ media_library:
 collections:
   - name: "project"
     label: "Proyectos"
-    folder: "_projects/project"
+    folder: "content/projects"
     create: true
     slug: "{{slug}}"
     fields:
       - {label: "Nombre", name: "name", widget: "string"}
       - {label: "Categoria", name: "category", widget: "select", "options": ["bodas", "general"]}
+      - {label: "Principal", name: "imagePrincipal", widget: "image"}
       - label: Fotografias
         name: photos
         widget: list
