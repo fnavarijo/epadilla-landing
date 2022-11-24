@@ -7,11 +7,6 @@ media_library:
   config:
     cloud_name: dkvtpo8w1
     api_key: 773866779144732
-    # default_transformations:
-    #   - - fetch_format: auto
-    #       width: 160
-    #       quality: auto
-    #       crop: scale
 collections:
   - name: "project"
     label: "Proyectos"
@@ -29,9 +24,11 @@ collections:
           config:
             default_transformations:
               - - fetch_format: auto
-                  width: 500
+                  width: 300
+                  height: 500
                   quality: auto
-                  crop: scale
+                  crop: thumb
+                  gravity: center
       - label: Fotografias
         name: photos
         widget: list
