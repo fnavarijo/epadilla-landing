@@ -7,9 +7,12 @@ import PortfolioGrid from '~/components/Portfolio/PortfolioGrid.vue';
 import PortfolioCard from '~/components/Portfolio/PortfolioCard.vue';
 
 const { params } = useRoute();
-const { data } = await useAsyncData('projects ', () => queryContent('/').find());
+// TODO: Add the where for the gallery type (bodas, general, etc)
+const { data: projects } = await useAsyncData('projects ', () =>
+  queryContent('projects').only(['name', 'thumbnail']).find()
+);
 
-console.log('Response', data.value);
+console.log(projects);
 
 provide('portfolio-type', params.name);
 </script>
@@ -21,13 +24,13 @@ provide('portfolio-type', params.name);
       <span class="h-3 w-3 bg-black rounded-full ml-3"></span>
     </header>
     <PortfolioGrid class="mt-8">
-      <PortfolioCard key="1" lastnames="Lopez Perez" gallery-id="1" />
-      <PortfolioCard key="2" lastnames="Lopez Perez" gallery-id="2" />
-      <PortfolioCard key="3" lastnames="Lopez Perez" gallery-id="3" />
-      <PortfolioCard key="4" lastnames="Lopez Perez" gallery-id="4" />
-      <PortfolioCard key="1" lastnames="Lopez Perez" gallery-id="5" />
-      <PortfolioCard key="1" lastnames="Lopez Perez" gallery-id="6" />
+      <PortfolioCard
+        v-for="(project, index) in projects"
+        :key="index"
+        :name="project.name"
+        :thumbnail-url="project.thumbnail"
+        gallery-id="1"
+      />
     </PortfolioGrid>
-    <div>Data: {{ data }}</div>
   </article>
 </template>
