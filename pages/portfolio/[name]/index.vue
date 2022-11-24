@@ -12,7 +12,8 @@ const { data: projects } = await useAsyncData('projects ', () =>
   queryContent('projects').only(['name', 'thumbnail', 'title']).find()
 );
 
-console.log(projects);
+// TODO: An inverse function should exist to transform this to spaces, when looking for the gallery.
+const getTitleId = (title) => title.replace(' ', '_');
 
 provide('portfolio-type', params.name);
 </script>
@@ -29,7 +30,7 @@ provide('portfolio-type', params.name);
         :key="index"
         :name="project.name"
         :thumbnail-url="project.thumbnail"
-        gallery-id="1"
+        :gallery-id="getTitleId(project.title)"
       />
     </PortfolioGrid>
   </article>
