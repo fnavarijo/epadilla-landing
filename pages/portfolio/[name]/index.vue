@@ -9,7 +9,7 @@ import PortfolioCard from '~/components/Portfolio/PortfolioCard.vue';
 const { params } = useRoute();
 // TODO: Add the where for the gallery type (bodas, general, etc)
 const { data: projects } = await useAsyncData('projects ', () =>
-  queryContent('projects').only(['name', 'thumbnail']).find()
+  queryContent('projects').only(['name', 'thumbnail', 'title']).find()
 );
 
 console.log(projects);
