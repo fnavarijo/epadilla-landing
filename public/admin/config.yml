@@ -29,8 +29,17 @@ collections:
                   quality: auto
                   crop: thumb
                   gravity: center
-      - label: Fotografias
-        name: photos
+      - label: Galeria
+        name: gallery
         widget: list
         fields:
-        - {label: "Fotografia", name: "photo", widget: "image"}
+        - label: "Fotografia"
+          name: "photo"
+          widget: "image"
+          media_library:
+            config:
+              default_transformations:
+                - - fetch_format: auto
+                    crop: fill
+                    width: 426
+                    height: 600
