@@ -2,7 +2,12 @@
 import { inject } from 'vue';
 
 defineProps({
-  lastnames: {
+  // TODO: Should rename this to name instead of lastnames
+  name: {
+    type: String,
+    required: true,
+  },
+  thumbnailUrl: {
     type: String,
     required: true,
   },
@@ -18,7 +23,8 @@ const itemType = inject('portfolio-type');
 <template>
   <NuxtLink :to="`/portfolio/${itemType}/${galleryId}`">
     <div
-      class="relative text-white aspect-[1/1.5] bg-no-repeat bg-cover bg-[url('https://res.cloudinary.com/dkvtpo8w1/image/upload/v1661277762/MJ%20Portafolio/Epadilla/pexels-cliford-mervil-2469122.jpg')] group"
+      class="relative text-white aspect-[1/1.5] bg-no-repeat bg-cover group"
+      :style="{ backgroundImage: `url(${thumbnailUrl})` }"
     >
       <div
         class="background-transition bg-black h-full w-full absolute top-0 left-0 right-0 bottom-0 invisible opacity-0 group-hover:visible group-hover:opacity-40"
@@ -33,7 +39,7 @@ const itemType = inject('portfolio-type');
         <span
           class="text-transition text-2xl uppercase mt-4 inline-block text-center relative -bottom-2 opacity-0 group-hover:bottom-0 group-hover:opacity-100"
         >
-          {{ lastnames }}
+          {{ name }}
         </span>
       </div>
     </div>
