@@ -1,21 +1,23 @@
 <script setup>
 // Main Page for each gallery
 // Nuxt/Content components are failing to import functions from #imports
-import { provide } from 'vue';
+import { provide, ref } from 'vue';
 import { useRoute } from 'vue-router';
+
+import { getTitleId } from '~/lib/gallery/title';
 import PortfolioGrid from '~/components/Portfolio/PortfolioGrid.vue';
 import PortfolioCard from '~/components/Portfolio/PortfolioCard.vue';
 
 const { params } = useRoute();
+provide('portfolio-type', params.name);
+
+/**
+ * Page: Fetch Data
+ */
 // TODO: Add the where for the gallery type (bodas, general, etc)
-const { data: projects } = await useAsyncData('projects ', () =>
+const { data: projects } = await useAsyncData('projects', async () =>
   queryContent('projects').only(['name', 'thumbnail', 'title']).find()
 );
-
-// TODO: An inverse function should exist to transform this to spaces, when looking for the gallery.
-const getTitleId = (title) => title.replace(' ', '_');
-
-provide('portfolio-type', params.name);
 </script>
 
 <template>

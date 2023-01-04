@@ -4,26 +4,33 @@ import { useRoute } from 'vue-router';
 
 import GalleryMasonry from '~/components/Gallery/GalleryMasonry.vue';
 import GalleryViewer from '~/components/Gallery/GalleryViewer.vue';
+import { getTitleFromId } from '~~/lib/gallery/title';
 
 const isViewerOpen = ref(false);
 const imageViewedIndex = ref(0);
+const galleryImages = ref([]);
 
 const { params } = useRoute();
-const imagesToLoad = [
-  'https://res.cloudinary.com/dkvtpo8w1/image/upload/c_fill,w_426,h_600,f_auto/v1662786109/MJ%20Portafolio/Epadilla/pexels-pixabay-265129.jpg',
-  'https://res.cloudinary.com/dkvtpo8w1/image/upload/c_fill,w_426,h_600,f_auto/v1662790818/MJ%20Portafolio/Epadilla/pexels-roberto-nickson-2559941.jpg',
-  'https://res.cloudinary.com/dkvtpo8w1/image/upload/c_fill,w_426,h_600,f_auto/v1662790815/MJ%20Portafolio/Epadilla/pexels-lumn-167699.jpg',
-  'https://res.cloudinary.com/dkvtpo8w1/image/upload/c_fill,w_426,h_600,f_auto/v1662786109/MJ%20Portafolio/Epadilla/pexels-pixabay-265129.jpg',
-  'https://res.cloudinary.com/dkvtpo8w1/image/upload/c_fill,w_426,h_600,f_auto/v1662790818/MJ%20Portafolio/Epadilla/pexels-roberto-nickson-2559941.jpg',
-  'https://res.cloudinary.com/dkvtpo8w1/image/upload/c_fill,w_426,h_600,f_auto/v1662790815/MJ%20Portafolio/Epadilla/pexels-lumn-167699.jpg',
-  'https://res.cloudinary.com/dkvtpo8w1/image/upload/c_fill,w_426,h_600,f_auto/v1665415508/MJ%20Portafolio/Epadilla/pexels-felix-mittermeier-1459505.jpg',
-  'https://res.cloudinary.com/dkvtpo8w1/image/upload/c_fill,w_426,h_600,f_auto/v1662786109/MJ%20Portafolio/Epadilla/pexels-pixabay-265129.jpg',
-  'https://res.cloudinary.com/dkvtpo8w1/image/upload/c_fill,w_426,h_600,f_auto/v1662786109/MJ%20Portafolio/Epadilla/pexels-pixabay-265129.jpg',
-  'https://res.cloudinary.com/dkvtpo8w1/image/upload/c_fill,w_426,h_600,f_auto/v1662786109/MJ%20Portafolio/Epadilla/pexels-pixabay-265129.jpg',
-  'https://res.cloudinary.com/dkvtpo8w1/image/upload/c_fill,w_426,h_600,f_auto/v1662786109/MJ%20Portafolio/Epadilla/pexels-pixabay-265129.jpg',
-  'https://res.cloudinary.com/dkvtpo8w1/image/upload/c_fill,w_426,h_600,f_auto/v1662790818/MJ%20Portafolio/Epadilla/pexels-roberto-nickson-2559941.jpg',
-];
 
+/**
+ * Page: Fetch Data
+ */
+const projectTitle = getTitleFromId(params.id);
+
+const { data: project, pending } = await useAsyncData(`gallery_${projectTitle}`, () =>
+  queryContent('projects').where({ title: projectTitle }).only(['name', 'gallery']).findOne()
+);
+
+if (!project.value.name && !pending.value) {
+  showError({
+    statusCode: 404,
+    statusMessage: 'Gallery not found',
+  });
+}
+
+/**
+ * Page: Functions
+ */
 function openImageOnViewer(position) {
   imageViewedIndex.value = position;
   isViewerOpen.value = true;
@@ -51,7 +58,8 @@ function getImagesChunks(images = [], size) {
   return chunks;
 }
 
-const galleryImages = getImagesChunks(imagesToLoad, 5);
+const imagesToLoad = project.value.gallery.map(({ photo }) => photo);
+galleryImages.value = getImagesChunks(imagesToLoad, 5);
 </script>
 
 <template>
@@ -61,7 +69,7 @@ const galleryImages = getImagesChunks(imagesToLoad, 5);
         <h1 class="text-3xl md:text-5xl text-black uppercase">{{ params.name }}</h1>
       </NuxtLink>
       <span class="h-3 w-3 bg-black rounded-full ml-3"></span>
-      <span class="ml-8 text-2xl uppercase">Lopez Perez</span>
+      <span class="ml-8 text-2xl uppercase">{{ project.name }}</span>
     </header>
     <div class="mt-8">
       <GalleryMasonry
