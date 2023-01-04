@@ -1,0 +1,8 @@
+---
+name: Martínez Pérez
+category: bodas
+thumbnail: https://res.cloudinary.com/dkvtpo8w1/image/upload/c_thumb,f_auto,g_center,h_500,q_auto,w_300/v1669262810/PadillaPortfolio/pexels-yndira-dejes%C3%BAs-389663.jpg
+gallery:
+  - photo: https://res.cloudinary.com/dkvtpo8w1/image/upload/c_fill,f_auto,h_600,w_426/v1668566872/PadillaPortfolio/bridge-in-forest-minimalist-4k-w7.jpg
+  - photo: https://res.cloudinary.com/dkvtpo8w1/image/upload/c_fill,f_auto,h_600,w_426/v1669258155/PadillaPortfolio/pexels-do%C4%9Fukan-benli-3094345.jpg
+---
