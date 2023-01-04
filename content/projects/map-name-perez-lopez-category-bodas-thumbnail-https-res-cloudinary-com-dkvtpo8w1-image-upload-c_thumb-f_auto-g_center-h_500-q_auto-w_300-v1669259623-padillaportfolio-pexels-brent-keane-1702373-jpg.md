@@ -1,5 +1,0 @@
----
-name: Perez Lopez
-category: bodas
-thumbnail: https://res.cloudinary.com/dkvtpo8w1/image/upload/c_thumb,f_auto,g_center,h_500,q_auto,w_300/v1669259623/PadillaPortfolio/pexels-brent-keane-1702373.jpg
----
