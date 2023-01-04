@@ -7,16 +7,20 @@ import { useRoute } from 'vue-router';
 import { getTitleId } from '~/lib/gallery/title';
 import PortfolioGrid from '~/components/Portfolio/PortfolioGrid.vue';
 import PortfolioCard from '~/components/Portfolio/PortfolioCard.vue';
+import PortfolioEmpty from '~/components/Portfolio/PortfolioEmpty.vue';
 
 const { params } = useRoute();
-provide('portfolio-type', params.name);
+const { name: galleryName } = params;
+provide('portfolio-type', galleryName);
 
 /**
  * Page: Fetch Data
  */
-// TODO: Add the where for the gallery type (bodas, general, etc)
-const { data: projects } = await useAsyncData('projects', async () =>
-  queryContent('projects').only(['name', 'thumbnail', 'title']).find()
+const { data: projects } = await useAsyncData(`projects_${galleryName}`, async () =>
+  queryContent('projects')
+    .where({ category: galleryName })
+    .only(['name', 'thumbnail', 'title'])
+    .find()
 );
 </script>
 
@@ -26,7 +30,7 @@ const { data: projects } = await useAsyncData('projects', async () =>
       <h1 class="text-3xl md:text-5xl text-black uppercase">{{ params.name }}</h1>
       <span class="h-3 w-3 bg-black rounded-full ml-3"></span>
     </header>
-    <PortfolioGrid class="mt-8">
+    <PortfolioGrid class="mt-8" v-if="projects.length">
       <PortfolioCard
         v-for="(project, index) in projects"
         :key="index"
@@ -35,5 +39,6 @@ const { data: projects } = await useAsyncData('projects', async () =>
         :gallery-id="getTitleId(project.title)"
       />
     </PortfolioGrid>
+    <PortfolioEmpty v-else class="mt-8" />
   </article>
 </template>
