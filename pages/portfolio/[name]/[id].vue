@@ -15,6 +15,15 @@ const galleryImages = ref([]);
 const { params } = useRoute();
 
 /**
+ * Page: Config
+ */
+definePageMeta({
+  pageTransition: {
+    name: 'slide-left',
+  },
+});
+
+/**
  * Page: Fetch Data
  */
 const projectTitle = getTitleFromId(params.id);

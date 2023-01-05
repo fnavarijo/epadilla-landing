@@ -32,4 +32,33 @@ watch(
 
 <style>
 @import './assets/style/index.css';
+
+:root {
+  --transition-page-time: 0.3s;
+}
+
+.slide-right-enter-active {
+  transition: all var(--transition-page-time) var(--transition-page-time);
+}
+.slide-right-leave-active {
+  transition: all var(--transition-page-time);
+}
+
+.slide-right-enter-from,
+.slide-right-leave-to {
+  opacity: 0;
+  transform: translateX(-5%);
+}
+
+.slide-left-enter-active {
+  transition: all var(--transition-page-time) var(--transition-page-time);
+}
+.slide-left-leave-active {
+  transition: all var(--transition-page-time);
+}
+.slide-left-enter-from,
+.slide-left-leave-to {
+  opacity: 0;
+  transform: translateX(5%);
+}
 </style>

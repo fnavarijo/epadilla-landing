@@ -14,6 +14,15 @@ const { name: galleryName } = params;
 provide('portfolio-type', galleryName);
 
 /**
+ * Page: Config
+ */
+definePageMeta({
+  pageTransition: {
+    name: 'slide-right',
+  },
+});
+
+/**
  * Page: Fetch Data
  */
 const { data: projects } = await useAsyncData(`projects_${galleryName}`, async () =>
