@@ -31,15 +31,14 @@ collections:
                   gravity: center
       - label: Galeria
         name: gallery
-        widget: list
-        fields:
-        - label: "Fotografia"
-          name: "photo"
-          widget: "image"
-          media_library:
-            config:
-              default_transformations:
-                - - fetch_format: auto
-                    crop: fill
-                    width: 426
-                    height: 600
+        widget: image
+        required: false
+        choose_url: false
+        media_library:
+          config:
+            multiple: true
+            default_transformations:
+              - - fetch_format: auto
+                  crop: fill
+                  width: 426
+                  height: 600

@@ -58,8 +58,7 @@ function getImagesChunks(images = [], size) {
   return chunks;
 }
 
-const imagesToLoad = project.value.gallery.map(({ photo }) => photo);
-galleryImages.value = getImagesChunks(imagesToLoad, 5);
+galleryImages.value = getImagesChunks(project.value.gallery, 5);
 </script>
 
 <template>
@@ -84,7 +83,7 @@ galleryImages.value = getImagesChunks(imagesToLoad, 5);
       <GalleryViewer
         v-show="isViewerOpen"
         @close="closeViewer"
-        :images="imagesToLoad"
+        :images="project.gallery"
         :viewed-image="imageViewedIndex"
       />
     </Transition>
