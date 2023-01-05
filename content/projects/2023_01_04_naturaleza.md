@@ -7,6 +7,6 @@ gallery:
   - photo: https://res.cloudinary.com/dkvtpo8w1/image/upload/c_fill,f_auto,h_600,w_426/v1672803998/PadillaPortfolio/pexels-stein-egil-liland-3408744.jpg
   - photo: https://res.cloudinary.com/dkvtpo8w1/image/upload/c_fill,f_auto,h_600,w_426/v1672804014/PadillaPortfolio/pexels-jacob-colvin-1761279.jpg
 galleryTest:
-  - https://res.cloudinary.com/dkvtpo8w1/image/upload/v1672804014/PadillaPortfolio/pexels-jacob-colvin-1761279.jpg
-  - https://res.cloudinary.com/dkvtpo8w1/image/upload/v1672804008/PadillaPortfolio/pexels-eberhard-grossgasteiger-572897.jpg
+  - https://res.cloudinary.com/dkvtpo8w1/image/upload/f_auto/v1668566872/PadillaPortfolio/bridge-in-forest-minimalist-4k-w7.jpg
+  - https://res.cloudinary.com/dkvtpo8w1/image/upload/f_auto/v1672803998/PadillaPortfolio/pexels-stein-egil-liland-3408744.jpg
 ---
