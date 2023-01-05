@@ -10,4 +10,6 @@ galleryTest:
   - https://res.cloudinary.com/dkvtpo8w1/image/upload/v1672804008/PadillaPortfolio/pexels-eberhard-grossgasteiger-572897.jpg
   - https://res.cloudinary.com/dkvtpo8w1/image/upload/v1672803998/PadillaPortfolio/pexels-stein-egil-liland-3408744.jpg
   - https://res.cloudinary.com/dkvtpo8w1/image/upload/v1672803996/PadillaPortfolio/pexels-luis-del-r%C3%ADo-15286.jpg
+  - https://res.cloudinary.com/dkvtpo8w1/image/upload/v1669262485/PadillaPortfolio/pexels-goran-vrakela-230290.jpg
+  - https://res.cloudinary.com/dkvtpo8w1/image/upload/v1669262810/PadillaPortfolio/pexels-yndira-dejes%C3%BAs-389663.jpg
 ---
