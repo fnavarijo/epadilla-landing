@@ -78,7 +78,8 @@ galleryImages.value = getImagesChunks(project.value.gallery, 5);
   <article class="mt-32 max-w-7xl mx-auto px-8 pb-8">
     <header class="flex items-center">
       <NuxtLink :to="`/portfolio/${params.name}`" class="relative category-breadcrumb">
-        <h1 class="text-3xl md:text-5xl text-black uppercase">{{ params.name }}</h1>
+        <!-- <h1 class="text-3xl md:text-5xl text-black uppercase">{{ params.name }}</h1> -->
+        <h1 class="text-3xl md:text-5xl text-black uppercase">Regresar</h1>
       </NuxtLink>
       <span class="h-3 w-3 bg-black rounded-full ml-3"></span>
       <span class="ml-8 text-2xl uppercase">{{ project.name }}</span>
