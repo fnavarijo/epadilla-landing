@@ -4,6 +4,8 @@ import { useRoute } from 'vue-router';
 
 import GalleryMasonry from '~/components/Gallery/GalleryMasonry.vue';
 import GalleryViewer from '~/components/Gallery/GalleryViewer.vue';
+import PortfolioEmpty from '~/components/Portfolio/PortfolioEmpty.vue';
+
 import { getTitleFromId } from '~~/lib/gallery/title';
 
 const isViewerOpen = ref(false);
@@ -44,6 +46,8 @@ function closeViewer() {
 }
 
 function getImagesChunks(images = [], size) {
+  if (images.length === 0) return [];
+
   let baseImages = images.slice();
   const chunks = [];
 
@@ -70,7 +74,7 @@ galleryImages.value = getImagesChunks(project.value.gallery, 5);
       <span class="h-3 w-3 bg-black rounded-full ml-3"></span>
       <span class="ml-8 text-2xl uppercase">{{ project.name }}</span>
     </header>
-    <div class="mt-8">
+    <div class="mt-8" v-if="galleryImages.length">
       <GalleryMasonry
         v-for="(images, groupIndex) in galleryImages"
         :key="groupIndex"
@@ -79,6 +83,7 @@ galleryImages.value = getImagesChunks(project.value.gallery, 5);
         @view="openImageOnViewer"
       />
     </div>
+    <PortfolioEmpty class="mt-8" v-else />
     <Transition>
       <GalleryViewer
         v-show="isViewerOpen"
