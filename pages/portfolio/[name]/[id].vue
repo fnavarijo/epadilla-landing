@@ -71,7 +71,11 @@ function getImagesChunks(images = [], size) {
   return chunks;
 }
 
-galleryImages.value = getImagesChunks(project.value.gallery, 5);
+function getImages(gallery) {
+  return typeof gallery === 'string' ? [gallery] : gallery;
+}
+
+galleryImages.value = getImagesChunks(getImages(project.value.gallery), 5);
 </script>
 
 <template>
