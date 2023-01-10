@@ -22,10 +22,14 @@ const itemType = inject('portfolio-type');
 
 <template>
   <NuxtLink :to="`/portfolio/${itemType}/${galleryId}`">
-    <div
-      class="relative text-white aspect-[1/1.5] bg-no-repeat bg-cover group"
-      :style="{ backgroundImage: `url(${thumbnailUrl})` }"
-    >
+    <div class="relative text-white aspect-[1/1.5] group">
+      <!-- // TODO: Polyfill for loading lazy: https://developer.mozilla.org/en-US/docs/Web/Performance/Lazy_loading -->
+      <img
+        class="object-cover"
+        :src="thumbnailUrl"
+        :alt="`Tarjeta para ver galería con nombre :${name}`"
+        loading="lazy"
+      />
       <div
         class="background-transition bg-black h-full w-full absolute top-0 left-0 right-0 bottom-0 invisible opacity-0 group-hover:visible group-hover:opacity-40"
       ></div>

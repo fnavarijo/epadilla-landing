@@ -16,17 +16,20 @@ const props = defineProps({
 
 <template>
   <div class="masonry mt-3">
-    <!-- TODO: Lazy load this images -->
     <div
       v-for="(image, index) in images"
       :key="index"
-      class="w-full h-full bg-no-repeat bg-cover bg-center cursor-pointer transition-transform duration-75 ease-linear hover:scale-[1.03]"
+      class="w-full h-full cursor-pointer transition-transform duration-75 ease-linear hover:scale-[1.03]"
       :class="`block-${index + 1}`"
-      :style="{
-        backgroundImage: `url(${image})`,
-      }"
       @click="$emit('view', offsetIndex + index)"
-    ></div>
+    >
+      <img
+        class="object-cover w-full h-full"
+        :src="image"
+        alt="Imagen de la galería"
+        loading="lazy"
+      />
+    </div>
   </div>
 </template>
 
