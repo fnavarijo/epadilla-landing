@@ -4,6 +4,8 @@ import { ref, watch, onMounted } from 'vue';
 import closeIcon from '~/assets/images/close_white.png';
 import chevron from '~/assets/images/chevron.png';
 
+import { transformator } from '~/lib/gallery/transformations';
+
 // TODO: Probably move to the state could be better.
 const props = defineProps({
   images: {
@@ -35,6 +37,10 @@ function viewPreviousImage() {
   imageViewedIndex.value =
     imageViewedIndex.value <= 0 ? props.images.length - 1 : imageViewedIndex.value - 1;
 }
+
+function getOptimizedImage(image) {
+  return transformator.getGalleryImage(transformator.getImagePath(image));
+}
 </script>
 
 <template>
@@ -50,7 +56,7 @@ function viewPreviousImage() {
       <div class="w-full h-full flex justify-center">
         <img
           class="h-full object-contain w-full grid-area-content place-self-center"
-          :src="images[imageViewedIndex]"
+          :src="getOptimizedImage(images[imageViewedIndex])"
           alt=""
         />
       </div>

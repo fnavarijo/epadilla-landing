@@ -35,10 +35,6 @@ collections:
         required: false
         choose_url: false
         media_library:
+          output_filename_only: true
           config:
             multiple: true
-            default_transformations:
-              - - fetch_format: auto
-                  crop: fill
-                  width: 426
-                  height: 600

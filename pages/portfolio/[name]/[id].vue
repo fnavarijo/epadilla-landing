@@ -7,6 +7,7 @@ import GalleryViewer from '~/components/Gallery/GalleryViewer.vue';
 import PortfolioEmpty from '~/components/Portfolio/PortfolioEmpty.vue';
 
 import { getTitleFromId } from '~~/lib/gallery/title';
+import { transformator } from '~/lib/gallery/transformations';
 
 const isViewerOpen = ref(false);
 const imageViewedIndex = ref(0);
@@ -75,7 +76,10 @@ function getImages(gallery) {
   return typeof gallery === 'string' ? [gallery] : gallery;
 }
 
-galleryImages.value = getImagesChunks(getImages(project.value.gallery), 5);
+const optimizedImages = getImages(project.value.gallery).map((image) =>
+  transformator.getMasonryImage(transformator.getImagePath(image))
+);
+galleryImages.value = getImagesChunks(optimizedImages, 5);
 </script>
 
 <template>
