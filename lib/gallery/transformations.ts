@@ -14,7 +14,8 @@ class Transformator {
 
   getImagePath (imageUrl: string) {
     const [_, imagePath] = imageUrl.split('/upload/');
-    return imagePath
+    // Decode it, because cloudinary SDK will encode again, throwing a 404.
+    return decodeURIComponent(imagePath)
   }
 
   getMasonryImage (imagePath: string) {
