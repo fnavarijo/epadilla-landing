@@ -39,7 +39,7 @@ function viewPreviousImage() {
 }
 
 function getOptimizedImage(image) {
-  return transformator.getGalleryImage(transformator.getImagePath(image));
+  return Boolean(image) && transformator.getGalleryImage(transformator.getImagePath(image));
 }
 </script>
 
