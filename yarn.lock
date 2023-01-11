@@ -8616,6 +8616,7 @@ __metadata:
     lodash: ^4.17.21
     nuxt: 3.0.0-rc.13
     prettier: ^2.7.1
+    vue3-carousel: ^0.2.9
   languageName: unknown
   linkType: soft
 
@@ -10175,6 +10176,15 @@ __metadata:
   peerDependencies:
     vue: ^3.2.0
   checksum: c7f0156ac03a9561d110f5ff778121eee7c8c154be6ec5064558ba22ab5237db36f29ffffc95cc16d692cc68a26df0c434f395401c0e3b48f782c7bed51391c6
+  languageName: node
+  linkType: hard
+
+"vue3-carousel@npm:^0.2.9":
+  version: 0.2.9
+  resolution: "vue3-carousel@npm:0.2.9"
+  peerDependencies:
+    vue: ^3.2.0
+  checksum: f74f6c1f945efd43e3bcbef9db8481b566cf746bbb2557771deea59fc30096f953274e63a47bc3ec66262c4d625512a7dcb75f9fb2755b09a0f3aef57f727bb1
   languageName: node
   linkType: hard
 
