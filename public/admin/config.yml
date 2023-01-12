@@ -8,6 +8,24 @@ media_library:
     cloud_name: dkvtpo8w1
     api_key: 773866779144732
 collections:
+  - name: "pages"
+    label: "Pages"
+    files:
+      - label: "Home"
+        name: "home"
+        file: "content/pages/home.yml"
+        fields:
+          - label: Slider
+            name: slider
+            widget: image
+            required: false
+            choose_url: false
+            media_library:
+              config:
+                multiple: true
+                default_transformations:
+                  - - fetch_format: auto
+                      quality: auto
   - name: "project"
     label: "Proyectos"
     folder: "content/projects"
