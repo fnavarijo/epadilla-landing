@@ -8,6 +8,10 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+  portfolios: {
+    type: Array,
+    default: () => [],
+  },
 });
 
 const logoImage = computed(() =>
@@ -43,9 +47,10 @@ function isCurrentPath(path) {
               class="pr-2 py-2 space-y-3 text-right border-r-2 relative md:absolute right-0 bottom-0"
               :class="[isWhite ? 'border-white' : 'border-black']"
             >
-              <li class="text-sm"><NuxtLink to="/portfolio/bodas">Bodas</NuxtLink></li>
-              <li class="text-sm">
-                <NuxtLink to="/portfolio/general">Proyectos</NuxtLink>
+              <li v-for="(portfolio, index) in portfolios" class="text-sm">
+                <NuxtLink :key="index" :to="`/portfolio/${portfolio.toLowerCase()}`">{{
+                  portfolio
+                }}</NuxtLink>
               </li>
             </ul>
           </div>

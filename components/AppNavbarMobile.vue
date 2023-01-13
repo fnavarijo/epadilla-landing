@@ -11,6 +11,10 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+  portfolios: {
+    type: Array,
+    default: () => [],
+  },
 });
 
 const isOpen = ref(false);
@@ -47,14 +51,16 @@ function closeMenu() {
       >
         <nav class="mt-20">
           <ul class="uppercase tracking-widest">
-            <li>
-              <span>Portafolio</span>
+            <li class="flex flex-col">
+              <span class="self-end">Portafolio</span>
               <ul class="text-right pr-2 space-y-2 border-r-2 mt-2 border-black">
-                <li class="text-sm">
-                  <NuxtLink @click="closeMenu" to="/portfolio/bodas">Bodas</NuxtLink>
-                </li>
-                <li class="text-sm">
-                  <NuxtLink @click="closeMenu" to="/portfolio/general">Proyectos</NuxtLink>
+                <li v-for="(portfolio, index) in portfolios" class="text-sm">
+                  <NuxtLink
+                    @click="closeMenu"
+                    :key="index"
+                    :to="`/portfolio/${portfolio.toLowerCase()}`"
+                    >{{ portfolio }}</NuxtLink
+                  >
                 </li>
               </ul>
             </li>
