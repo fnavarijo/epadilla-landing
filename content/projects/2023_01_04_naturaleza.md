@@ -1,6 +1,6 @@
 ---
 name: Naturaleza
-category: general
+category: Varios
 thumbnail: https://res.cloudinary.com/dkvtpo8w1/image/upload/c_thumb,f_auto,g_center,h_500,q_auto,w_300/v1672803996/PadillaPortfolio/pexels-luis-del-r%C3%ADo-15286.jpg
 gallery:
   - https://res.cloudinary.com/dkvtpo8w1/image/upload/v1672804014/PadillaPortfolio/pexels-jacob-colvin-1761279.jpg
