@@ -1,8 +1,7 @@
 <script setup>
-import { computed } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 import { useRoute } from 'vue-router';
 
-const route = useRoute();
 const props = defineProps({
   isWhite: {
     type: Boolean,
@@ -14,11 +13,20 @@ const props = defineProps({
   },
 });
 
+const subMenuHeight = ref(0);
+const route = useRoute();
+
 const logoImage = computed(() =>
   props.isWhite
     ? 'https://res.cloudinary.com/dkvtpo8w1/image/upload/v1660831973/MJ%20Portafolio/Epadilla/EP_Logo_white.png'
     : 'https://res.cloudinary.com/dkvtpo8w1/image/upload/v1660831973/MJ%20Portafolio/Epadilla/EP_Logo.png'
 );
+
+// We can refactor this to own component
+onMounted(() => {
+  const height = document.getElementById('submenu').offsetHeight;
+  subMenuHeight.value = height;
+});
 
 function isCurrentPath(path) {
   return route.path.includes(path);
@@ -41,10 +49,12 @@ function isCurrentPath(path) {
         >
           <span>Portafolio</span>
           <div
-            class="nav-item-submenu md:h-0 overflow-y-hidden min-w-[10ch] relative transition-all duration-100 ease-linear"
+            class="nav-item-submenu md:h-0 overflow-y-hidden absolute transition-all duration-100 ease-linear"
+            :style="{ '--submenu-height': `${subMenuHeight}px` }"
           >
             <ul
-              class="pr-2 py-2 space-y-3 text-right border-r-2 relative md:absolute right-0 bottom-0"
+              id="submenu"
+              class="max-w-min pr-2 py-2 space-y-3 text-right border-r-2 relative md:absolute right-0 bottom-0"
               :class="[isWhite ? 'border-white' : 'border-black']"
             >
               <li v-for="(portfolio, index) in portfolios" class="text-sm">
@@ -85,9 +95,9 @@ function isCurrentPath(path) {
 }
 
 .nav-item-submenu {
-  /* 200% - for each element */
-  /* 20px - spacing between list elements and padding of container */
-  --submenu-height: calc(200% + 20px);
+  --submenu-height: 0;
   @apply group-hover:h-[var(--submenu-height)];
+
+  width: calc(100% + 0.5rem);
 }
 </style>
