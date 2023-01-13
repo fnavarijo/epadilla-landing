@@ -59,7 +59,12 @@ function closeMenu() {
               </ul>
             </li>
             <li class="mt-8 text-right">
-              <NuxtLink class="uppercase tracking-widest" @click="closeMenu" to="/contact">
+              <NuxtLink
+                class="uppercase tracking-widest"
+                @click="closeMenu"
+                to="mailto:enriquetono95@gmail.com"
+                target="_blank"
+              >
                 Escríbeme
               </NuxtLink>
             </li>

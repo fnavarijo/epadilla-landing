@@ -52,12 +52,9 @@ function isCurrentPath(path) {
         </li>
         <li
           class="nav-item uppercase tracking-widest"
-          :class="[
-            isWhite ? 'before:bg-white' : 'before:bg-black',
-            { 'is-active': isCurrentPath('/contact') },
-          ]"
+          :class="[isWhite ? 'before:bg-white' : 'before:bg-black']"
         >
-          <NuxtLink to="/contact"> Escríbeme </NuxtLink>
+          <NuxtLink to="mailto:enriquetono95@gmail.com" target="_blank"> Escríbeme </NuxtLink>
         </li>
       </ul>
     </nav>
