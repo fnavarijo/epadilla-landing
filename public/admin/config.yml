@@ -9,7 +9,7 @@ media_library:
     api_key: 773866779144732
 collections:
   - name: "pages"
-    label: "Pages"
+    label: "Páginas"
     files:
       - label: "Home"
         name: "home"
@@ -27,7 +27,7 @@ collections:
                   - - fetch_format: auto
                       quality: auto
   - name: "categories"
-    label: "Categorias"
+    label: "Categorías"
     create: true
     folder: "content/categories"
     slug: "{{name}}"
@@ -38,6 +38,9 @@ collections:
     folder: "content/projects"
     create: true
     slug: "{{year}}_{{month}}_{{day}}_{{name}}"
+    view_groups:
+      - label: "Categoría"
+        field: category
     fields:
       - {label: "Nombre", name: "name", widget: "string"}
       - label: "Categoria"
