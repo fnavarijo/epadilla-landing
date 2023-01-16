@@ -39,6 +39,16 @@ definePageMeta({
 useHead({
   meta: [
     {
+      hid: 'og:title',
+      name: 'og:title',
+      content: 'Todo queda mejor capturado en fotografías.',
+    },
+    {
+      hid: 'og:type',
+      name: 'og:type',
+      content: 'website',
+    },
+    {
       hid: 'og:image',
       name: 'og:image',
       content: project.value?.thumbnail,

@@ -18,8 +18,8 @@ const route = useRoute();
 
 const logoImage = computed(() =>
   props.isWhite
-    ? 'https://res.cloudinary.com/dkvtpo8w1/image/upload/v1660831973/MJ%20Portafolio/Epadilla/EP_Logo_white.png'
-    : 'https://res.cloudinary.com/dkvtpo8w1/image/upload/v1660831973/MJ%20Portafolio/Epadilla/EP_Logo.png'
+    ? 'https://res.cloudinary.com/dkvtpo8w1/image/upload/c_scale,w_125/v1673881784/PadillaPortfolio/EP_Logo_white_reduced.png'
+    : 'https://res.cloudinary.com/dkvtpo8w1/image/upload/c_scale,w_125/v1673881784/PadillaPortfolio/EP_Logo_reduced.png'
 );
 
 // We can refactor this to own component

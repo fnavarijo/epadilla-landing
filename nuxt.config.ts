@@ -6,6 +6,7 @@ export default defineNuxtConfig({
     head: {
       title: 'Enrique Padilla Photography',
       script: [{ src: 'https://identity.netlify.com/v1/netlify-identity-widget.js' }],
+      link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
       meta: [
         {
           hid: 'description',
