@@ -4,7 +4,20 @@ export default defineNuxtConfig({
   buildModules: ['@nuxtjs/google-fonts'],
   app: {
     head: {
+      title: 'Enrique Padilla Photography',
       script: [{ src: 'https://identity.netlify.com/v1/netlify-identity-widget.js' }],
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'Todo queda mejor capturado en fotografías.'
+        },
+        {
+          hid: 'og:description',
+          name: 'og:description',
+          content: 'Todo queda mejor capturado en fotografías.'
+        }
+      ]
     },
   },
   googleFonts: {

@@ -16,6 +16,18 @@ const galleryImages = ref([]);
 const { params } = useRoute();
 
 /**
+ * Page: Fetch Data
+ */
+const projectTitle = getTitleFromId(params.id);
+
+const { data: project, pending } = await useAsyncData(`gallery_${projectTitle}`, () =>
+  queryContent('projects')
+    .where({ title: projectTitle })
+    .only(['name', 'gallery', 'thumbnail'])
+    .findOne()
+);
+
+/**
  * Page: Config
  */
 definePageMeta({
@@ -24,14 +36,15 @@ definePageMeta({
   },
 });
 
-/**
- * Page: Fetch Data
- */
-const projectTitle = getTitleFromId(params.id);
-
-const { data: project, pending } = await useAsyncData(`gallery_${projectTitle}`, () =>
-  queryContent('projects').where({ title: projectTitle }).only(['name', 'gallery']).findOne()
-);
+useHead({
+  meta: [
+    {
+      hid: 'og:image',
+      name: 'og:image',
+      content: project.value?.thumbnail,
+    },
+  ],
+});
 
 if (!project.value.name && !pending.value) {
   showError({
