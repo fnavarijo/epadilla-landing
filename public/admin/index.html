@@ -13,6 +13,27 @@
   <!-- Include the script that builds the page and powers Netlify CMS -->
   <!-- TODO: Check if we can generate it using node package -->
   <script src="https://unpkg.com/netlify-cms@2.10.192/dist/netlify-cms.js"></script>
+  <script>
+    const ProjectPreview = createClass({
+      render: function () {
+        const entry = this.props.entry;
+        console.log(entry.getIn(['data', 'name']))
+        return h('div', { class: 'post-preview-container' },
+          h('h1', { class: 'post-preview-title' }, entry.getIn(['data', 'name'])),
+          h('div', { class: 'post-preview-subtitle' },
+            h('span', { class: 'bold' }, 'Categoría: '),
+            entry.getIn(['data', 'category'])
+          ),
+          h('div', {},
+            h('img', { src: entry.getIn(['data', 'thumbnail']) })
+          ),
+        )
+      }
+    })
+
+    CMS.registerPreviewStyle('/admin/index.css')
+    CMS.registerPreviewTemplate('project', ProjectPreview)
+  </script>
 
 </body>
 
