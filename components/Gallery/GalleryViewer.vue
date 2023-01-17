@@ -3,6 +3,7 @@ import { ref, watch, onMounted } from 'vue';
 
 import closeIcon from '~/assets/images/close_white.png';
 import chevron from '~/assets/images/chevron.png';
+import LoaderImage from '../Image/LoaderImage.vue';
 
 import { transformator } from '~/lib/gallery/transformations';
 
@@ -54,10 +55,11 @@ function getOptimizedImage(image) {
         <img :src="closeIcon" class="h-6 w-6" alt="Close dialog" />
       </button>
       <div class="w-full h-full flex justify-center">
-        <img
+        <LoaderImage
           class="h-full object-contain w-full grid-area-content place-self-center"
           :src="getOptimizedImage(images[imageViewedIndex])"
           alt=""
+          :key="imageViewedIndex"
         />
       </div>
       <div class="flex place-self-center grid-area-controls space-x-12">
