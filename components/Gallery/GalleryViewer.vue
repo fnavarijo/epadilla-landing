@@ -1,5 +1,4 @@
 <script setup>
-import debounce from 'lodash/debounce';
 import { ref, watch, onMounted } from 'vue';
 
 import closeIcon from '~/assets/images/close_white.png';
@@ -24,7 +23,6 @@ const imageViewedIndex = ref(0);
 
 onMounted(() => {
   imageViewedIndex.value = props.viewedImage || 0;
-  updateVh();
 });
 
 watch(
@@ -44,20 +42,11 @@ function viewPreviousImage() {
 function getOptimizedImage(image) {
   return Boolean(image) && transformator.getGalleryImage(transformator.getImagePath(image));
 }
-
-function updateVh() {
-  let vh = window.innerHeight * 0.01;
-  document.documentElement.style.setProperty('--base-vh', `${vh}px`);
-}
-
-const updateVHDebounced = debounce(updateVh, 250);
-
-window.addEventListener('resize', updateVHDebounced);
 </script>
 
 <template>
   <!-- TODO: Because is fixed, the padding counts behind the scroll bar -->
-  <div class="viewer-container p-4 md:p-8 fixed bg-black/80 w-screen top-0 left-0 z-50">
+  <div class="h-screen-fluid p-4 md:p-8 fixed bg-black/80 w-screen top-0 left-0 z-50">
     <article class="w-full viewer-grid">
       <button
         class="action-button justify-self-end self-center grid-area-close"
@@ -86,10 +75,6 @@ window.addEventListener('resize', updateVHDebounced);
 </template>
 
 <style>
-.viewer-container {
-  height: calc(var(--base-vh) * 100);
-}
-
 .viewer-grid {
   @apply grid grid-rows-viewer grid-cols-1 gap-y-4 h-full;
 }
