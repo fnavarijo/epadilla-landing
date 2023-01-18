@@ -36,12 +36,23 @@ const props = defineProps({
 <style scoped>
 .masonry {
   @apply grid grid-cols-6 grid-rows-masonry gap-3;
-  /* This could be parametrized */
-  /* Or generated 🤔 */
+
   grid-template-areas:
-    'area1 area1 area2 area2 area2 area4'
-    'area1 area1 area2 area2 area2 area5'
-    'area1 area1 area3 area3 area3 area5';
+    'area1 area1 area1 area2 area2 area2'
+    'area1 area1 area1 area2 area2 area2'
+    'area3 area3 area4 area4 area5 area5'
+    'area3 area3 area4 area4 area5 area5';
+}
+
+@media screen(md) {
+  .masonry {
+    /* This could be parametrized */
+    /* Or generated 🤔 */
+    grid-template-areas:
+      'area1 area1 area2 area2 area2 area4'
+      'area1 area1 area2 area2 area2 area5'
+      'area1 area1 area3 area3 area3 area5';
+  }
 }
 
 .block-1 {
