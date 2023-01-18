@@ -24,6 +24,7 @@ const imageViewedIndex = ref(0);
 
 onMounted(() => {
   imageViewedIndex.value = props.viewedImage || 0;
+  updateVh();
 });
 
 watch(
