@@ -16,7 +16,7 @@ const images = homePage.value.slider;
   <div class="relative">
     <div class="w-screen h-screen bg-black bg-opacity-20 absolute z-[5]"></div>
     <ClientOnly>
-      <Carousel :autoplay="5000" :wrapAround="true" class="h-screen w-full relative">
+      <Carousel :autoplay="5000" :wrapAround="true" class="h-full w-full relative">
         <Slide v-for="(image, index) in images" :key="index">
           <img class="h-screen w-full object-cover object-center" :src="image" alt="Header image" />
         </Slide>
