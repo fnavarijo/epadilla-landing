@@ -46,7 +46,7 @@ function getOptimizedImage(image) {
 
 <template>
   <!-- TODO: Because is fixed, the padding counts behind the scroll bar -->
-  <div class="p4 md:p-8 fixed bg-black/80 w-screen h-screen top-0 left-0 z-50">
+  <div class="p-4 md:p-8 fixed bg-black/80 w-screen h-screen top-0 left-0 z-50">
     <article class="w-full viewer-grid">
       <button
         class="action-button justify-self-end self-center grid-area-close"
