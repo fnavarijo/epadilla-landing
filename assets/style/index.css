@@ -1,3 +1,7 @@
+:root {
+  --base-vh: 1vh;
+}
+
 html, body {
   @apply font-body;
 }

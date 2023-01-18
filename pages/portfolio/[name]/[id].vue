@@ -126,14 +126,16 @@ galleryImages.value = getImagesChunks(optimizedImages, 5);
       />
     </div>
     <PortfolioEmpty class="mt-8" v-else />
-    <Transition>
-      <GalleryViewer
-        v-show="isViewerOpen"
-        @close="closeViewer"
-        :images="project.gallery"
-        :viewed-image="imageViewedIndex"
-      />
-    </Transition>
+    <ClientOnly>
+      <Transition>
+        <GalleryViewer
+          v-show="isViewerOpen"
+          @close="closeViewer"
+          :images="project.gallery"
+          :viewed-image="imageViewedIndex"
+        />
+      </Transition>
+    </ClientOnly>
   </article>
 </template>
 
