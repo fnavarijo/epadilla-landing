@@ -16,7 +16,7 @@ function updateVh() {
   document.documentElement.style.setProperty('--base-vh', `${vh}px`);
 }
 
-const updateVHDebounced = debounce(updateVh, 250);
+const updateVHDebounced = debounce(updateVh, 100);
 </script>
 
 <template>

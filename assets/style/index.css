@@ -8,6 +8,8 @@ html, body {
 
 .h-screen-fluid {
   height: calc(var(--base-vh) * 100);
+
+  @apply transition-size duration-75 ease-linear;
 }
 
 @media screen(md) {
