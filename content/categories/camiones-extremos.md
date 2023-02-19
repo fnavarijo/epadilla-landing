@@ -1,3 +1,0 @@
----
-name: Camiones extremos
----
