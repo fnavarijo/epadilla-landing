@@ -46,4 +46,5 @@ gallery:
   - https://res.cloudinary.com/dkvtpo8w1/image/upload/v1673928471/PadillaPortfolio/Boda/DSC06825.jpg
   - https://res.cloudinary.com/dkvtpo8w1/image/upload/v1673928470/PadillaPortfolio/Boda/DSC07954.jpg
   - https://res.cloudinary.com/dkvtpo8w1/image/upload/v1673928471/PadillaPortfolio/Boda/DSC06810.jpg
+  - https://res.cloudinary.com/dwquvbjxc/image/upload/f_auto,q_auto/v1674528144/cld-sample-5.jpg
 ---
