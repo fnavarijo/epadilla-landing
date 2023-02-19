@@ -7,7 +7,7 @@ class Transformator {
   constructor () {
     this.cloudinary = new Cloudinary({
       cloud: {
-        cloudName: 'dkvtpo8w1'
+        cloudName: 'dwquvbjxc'
       }
     })
   }
